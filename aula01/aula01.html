@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Exemplo 01</title>
+	<script type="text/javascript" src="../js/jquery-3.0.0.min.js"></script>
+	<script type="text/javascript">
+		var conta = 0;
+		$(document).ready(function(){
+			$('#btn').click(function(){
+				conta++;
+				var r = (Math.random()*255).toFixed(0);
+				var g = (Math.random()*255).toFixed(0);
+				var b = (Math.random()*255).toFixed(0);
+
+				$(this).text("teste "+conta+" "+'background: rgb('+r+','+g+','+b+')');
+				$('body').css('background','rgb('+r+','+g+','+b+')');
+
+			});
+		});
+	</script>
+</head>
+<body>
+	<button id="btn">teste</button>
+</body>
+</html>
