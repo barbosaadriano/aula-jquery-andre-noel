@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Exemplo 1</title>
+<script type="text/javascript" src="../js/jquery-3.0.0.min.js"></script>
+<script type="text/javascript">
+	var jogadorAtual = 'x';
+	var ganhador = '';
+	var c1,c2,c3,c4,c5,c6,c7,c8,c9;
+	function verifica1(x) {
+		if (x.find('.valor').text()==='x') {
+			return 1;
+		}
+		else if (x.find('.valor').text()==='o') {
+			return 0;
+		} else {
+			return 9;
+		}
+	}
+	$(document).ready(function(){
+		$('#restart').click(function(){
+			jogadorAtual = 'x';
+			ganhador = '';
+			$('#joga').text('Jogador Atual:'+jogadorAtual);
+			var quadro = $('#quadro');
+			quadro.empty();
+
+			for (i=1; i<10; i++) {
+				$('<div></div>').addClass('bloco').append($('<div></div>').addClass('valor'))
+				.click(function(){
+					$(this).unbind();
+					ganhador = '';
+					$(this).find('.valor').addClass('marked').text(jogadorAtual);
+					var teste = '';
+					$("#quadro").find('.bloco').each(function(e){
+						if (e===0) {
+							c1 = verifica1($(this));
+						}
+						if (e===1) {
+							c2 = verifica1($(this));
+						}
+						if (e===2) {
+							c3 = verifica1($(this));
+						}
+						if (e===3) {
+							c4 = verifica1($(this));
+						}
+						if (e===4) {
+							c5 = verifica1($(this));
+						}
+						if (e===5) {
+							c6 = verifica1($(this));
+						}
+						if (e===6) {
+							c7 = verifica1($(this));
+						}
+						if (e===7) {
+							c8 = verifica1($(this));
+						}
+						if (e===8) {
+							c9 = verifica1($(this));
+						}
+
+					});
+					if ((c1+c2+c3)===0) {
+						ganhador = 'o';
+						$('.bloco').eq(0).find('.valor').addClass('win');
+						$('.bloco').eq(1).find('.valor').addClass('win');
+						$('.bloco').eq(2).find('.valor').addClass('win');
+					} else if ((c1+c2+c3)===3) {
+						ganhador = 'x';
+						$('.bloco').eq(0).find('.valor').addClass('win');
+						$('.bloco').eq(1).find('.valor').addClass('win');
+						$('.bloco').eq(2).find('.valor').addClass('win');
+					}
+					if ((c4+c5+c6)===0) {
+						ganhador = 'o';
+						$('.bloco').eq(3).find('.valor').addClass('win');
+						$('.bloco').eq(4).find('.valor').addClass('win');
+						$('.bloco').eq(5).find('.valor').addClass('win');
+					} else if ((c4+c5+c6)===3) {
+						ganhador = 'x';
+						$('.bloco').eq(3).find('.valor').addClass('win');
+						$('.bloco').eq(4).find('.valor').addClass('win');
+						$('.bloco').eq(5).find('.valor').addClass('win');
+					}
+					if ((c7+c8+c9)===0) {
+						ganhador = 'o';
+						$('.bloco').eq(6).find('.valor').addClass('win');
+						$('.bloco').eq(7).find('.valor').addClass('win');
+						$('.bloco').eq(8).find('.valor').addClass('win');
+					} else if ((c7+c8+c9)===3) {
+						ganhador = 'x';
+						$('.bloco').eq(6).find('.valor').addClass('win');
+						$('.bloco').eq(7).find('.valor').addClass('win');
+						$('.bloco').eq(8).find('.valor').addClass('win');
+					}if ((c1+c4+c7)===0) {
+						ganhador = 'o';
+						$('.bloco').eq(0).find('.valor').addClass('win');
+						$('.bloco').eq(3).find('.valor').addClass('win');
+						$('.bloco').eq(6).find('.valor').addClass('win');
+					} else if ((c1+c4+c7)===3) {
+						ganhador = 'x';
+						$('.bloco').eq(0).find('.valor').addClass('win');
+						$('.bloco').eq(3).find('.valor').addClass('win');
+						$('.bloco').eq(6).find('.valor').addClass('win');						
+					}
+					if ((c2+c5+c8)===0) {
+						ganhador = 'o';
+						$('.bloco').eq(1).find('.valor').addClass('win');
+						$('.bloco').eq(4).find('.valor').addClass('win');
+						$('.bloco').eq(7).find('.valor').addClass('win');						
+					} else if ((c2+c5+c8)===3) {
+						ganhador = 'x';
+						$('.bloco').eq(1).find('.valor').addClass('win');
+						$('.bloco').eq(4).find('.valor').addClass('win');
+						$('.bloco').eq(7).find('.valor').addClass('win');						
+					}
+					if ((c3+c6+c9)===0) {
+						ganhador = 'o';
+						$('.bloco').eq(2).find('.valor').addClass('win');
+						$('.bloco').eq(5).find('.valor').addClass('win');
+						$('.bloco').eq(8).find('.valor').addClass('win');										
+					} else if ((c3+c6+c9)===3) {
+						ganhador = 'x';
+						$('.bloco').eq(2).find('.valor').addClass('win');
+						$('.bloco').eq(5).find('.valor').addClass('win');
+						$('.bloco').eq(8).find('.valor').addClass('win');					
+					}
+					if ((c1+c5+c9)===0) {
+						ganhador = 'o';
+						$('.bloco').eq(0).find('.valor').addClass('win');
+						$('.bloco').eq(4).find('.valor').addClass('win');
+						$('.bloco').eq(8).find('.valor').addClass('win');						
+					} else if ((c1+c5+c9)===3) {
+						ganhador = 'x';
+						$('.bloco').eq(0).find('.valor').addClass('win');
+						$('.bloco').eq(4).find('.valor').addClass('win');
+						$('.bloco').eq(8).find('.valor').addClass('win');						
+					}
+					if ((c3+c5+c7)===0) {
+						ganhador = 'o';
+						$('.bloco').eq(2).find('.valor').addClass('win');
+						$('.bloco').eq(4).find('.valor').addClass('win');
+						$('.bloco').eq(6).find('.valor').addClass('win');						
+					} else if ((c3+c5+c7)===3) {
+						ganhador = 'x';
+						$('.bloco').eq(2).find('.valor').addClass('win');
+						$('.bloco').eq(4).find('.valor').addClass('win');
+						$('.bloco').eq(6).find('.valor').addClass('win');						
+					}
+					
+
+					if (ganhador!=='') {
+						$('#joga').text('Jogador '+ganhador+' you win!!');
+						$('.bloco').unbind();
+						// $('.bloco').find(":contains('"+ganhador+"')").addClass('win');
+					} else { 
+						if (jogadorAtual === 'x') 
+							jogadorAtual = 'o';
+						else
+							jogadorAtual = 'x';
+						$('#joga').text('Jogador Atual:'+jogadorAtual);
+					}
+					if (	(c1!==9) && 
+							(c2!==9) && 
+							(c3!==9) && 
+							(c4!==9) && 
+							(c5!==9) && 
+							(c6!==9) && 
+							(c7!==9) && 
+							(c8!==9) && 
+							(c9!==9)   ) 
+					{
+						$('#joga').text('Empate!');
+						$('.bloco').unbind();
+					}
+				}).appendTo(quadro);
+			}
+		});
+	});
+</script>
+<style type="text/css">
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	#quadro {
+		width: 500px;
+		height: 500px;
+		margin: 0 auto;
+		background: #eee;
+	}
+	.bloco {
+		float: left;
+		font-family: Helvetica, Arial, sans-serif;
+		width: 33.3333333%;
+		height: 33.333333%;
+		font-size: 60px;
+		text-align: center;
+	}
+	.valor {
+		height: 100%;
+		width: 100%;
+		transform: rotateY(270deg);
+		transition: all ease-in-out 1s;
+		background: #999;
+	}
+	.marked {
+		transform: rotateY(0deg);
+	}
+	.win {
+		background: #39F;
+	}
+
+</style>
+</head>
+<body>
+	<h1 id="joga"></h1>
+	<button id="restart">START</button>
+	<div id="quadro">
+	</div>
+</body>
+</html>
