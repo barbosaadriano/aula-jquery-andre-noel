@@ -6,26 +6,85 @@
 <script type="text/javascript" src="../js/jquery-3.0.0.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-        $('label').css('color','#f00');
-        $('#form1').submit(function(){
+        //muda a cor de fundo dos labels ao carregar
+        $('label').css('color','rgb(224, 51, 31)');
+        //Envio do form
+        $('#form1').submit(function(e){
+            //verifica os inputs diferentes do submit
             $('input:not(input[type="submit"])').each(function(){
+                //pinta de vermelho se estiver vazio
                 if ( $.trim($(this).val())==='') {
-                   $(this).css('background-color','red');
+                   $(this).css('background-color','rgb(224, 51, 31)');
                 }  else {
-                    $(this).css('background-color','white');
+                    $(this).css('background-color','#eee');
                 }
             });
+            //some com o primeiro li
             $('li:first').fadeOut();
-            return false;
+            e.preventDefault();
         });
-        $('#btn-limpar').click(function(){
-            $('input:not(input[type="submit"])').val('').css('background-color','white');
-            return false;
+        //limpar os campos
+        $('#btn-limpar').click(function(e){
+            $('input:not(input[type="submit"])').val('').css('background-color','#eee');
+            e.preventDefault();
         });
-        $('li').eq(2).css('background-color','yellow');
-        $('<li></li>').text('novo item adicionado com JQuery!').appendTo($('#lista-exercicios'));
+        //pintar o terceiro item
+        $('li').eq(2).css('background-color','rgb(248, 181, 87)');
+        //adicionar um novo item
+        $('<li></li>').text('item adicionado com sucesso!').appendTo($('#lista-exercicios'));
     });    
 </script>
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        font-family: Helvetica, Arial, sans-serif;
+        color: #333;
+    }
+    form, h1, h2, ol {
+        width: 80%;
+        margin: 0 auto;
+    }
+    label, input {
+        display: block;
+    }
+    input[type="text"], input[type="number"] {
+        width: 100%;
+        margin-top: 5px;
+        height: 50px;
+        border: 1px solid transparent;
+        background: #eee;
+        padding: 4px;
+        font-size: 24px;
+    }
+    input[type="submit"], button {
+        display: inline-block;
+        width: 49%;
+        height: 50px;
+        background: #eee;
+        border: none;
+        box-shadow: 1px 1px 2px gray;
+    }
+    input[type="submit"]:active, button:active{
+       box-shadow: inset 1px 1px 2px gray;   
+       background: rgb(224, 51, 31);
+    }
+    h1, h2 {
+        margin-top: 1em;
+        margin-bottom: 1em;
+        text-transform: uppercase;
+        text-align: center;
+    }
+    ol li {
+        margin-left: 2em;
+        padding-left: 0.5em;
+        margin-bottom: 0.5em;
+    }
+
+</style>
 </head>
 <body>
     <h1>Exemplo de formulário</h1>
