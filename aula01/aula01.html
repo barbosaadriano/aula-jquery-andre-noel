@@ -6,6 +6,7 @@
 	<script type="text/javascript" src="../js/jquery-3.0.0.min.js"></script>
 	<script type="text/javascript">
 		var conta = 0;
+		var bg = '';
 		$(document).ready(function(){
 			$('#btn').click(function(){
 				conta++;
@@ -13,14 +14,40 @@
 				var g = (Math.random()*255).toFixed(0);
 				var b = (Math.random()*255).toFixed(0);
 
-				$(this).text("teste "+conta+" "+'background: rgb('+r+','+g+','+b+')');
+				$(this).text("teste "+conta);
 				$('body').css('background','rgb('+r+','+g+','+b+')');
+				bg = 'rgb('+r+','+g+','+b+')';
+				for (i=0; i<500; i++) {
+					var x = (Math.random()*255).toFixed(0);
+					var y = (Math.random()*255).toFixed(0);
+					var z = (Math.random()*255).toFixed(0);
+					$('<div></div>').addClass('teste').css('background','rgb('+x+','+y+','+z+')')
+					.click(function(){
+						$(this).css('background',bg)
+					})
+					.appendTo($('#container'));
+				}
 
 			});
 		});
 	</script>
+	<style type="text/css">
+		.container {
+			width: 100%;
+			overflow: hidden;
+		}
+		.teste {
+			width: 50px;
+			height: 50px;
+			display: inline-block;
+			float: left;
+		}
+	</style>
 </head>
 <body>
 	<button id="btn">teste</button>
+	<div id="container">
+
+	</div>
 </body>
 </html>
