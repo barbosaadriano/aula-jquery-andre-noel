@@ -13,17 +13,15 @@
 				var r = (Math.random()*255).toFixed(0);
 				var g = (Math.random()*255).toFixed(0);
 				var b = (Math.random()*255).toFixed(0);
-
 				$(this).text("teste "+conta);
-				$('body').css('background','rgb('+r+','+g+','+b+')');
 				bg = 'rgb('+r+','+g+','+b+')';
-				for (i=0; i<500; i++) {
+				for (i=0; i<50; i++) {
 					var x = (Math.random()*255).toFixed(0);
 					var y = (Math.random()*255).toFixed(0);
 					var z = (Math.random()*255).toFixed(0);
 					$('<div></div>').addClass('teste').css('background','rgb('+x+','+y+','+z+')')
 					.click(function(){
-						$(this).css('background',bg)
+						$(this).toggleClass('aberto');
 					})
 					.appendTo($('#container'));
 				}
@@ -33,14 +31,30 @@
 	</script>
 	<style type="text/css">
 		.container {
-			width: 100%;
+			width: 500px;
+			margin: 0 auto;
 			overflow: hidden;
 		}
+		.contaier, .teste {
+			box-sizing: border-box;
+		}
 		.teste {
-			width: 50px;
-			height: 50px;
+			width: 100px;
+			height: 100px;
 			display: inline-block;
 			float: left;
+			transition: all ease-in-out 0.1s;
+		}
+		.teste:hover{
+			transform: rotateZ(180deg) scale(2,2);
+		}
+		.aberto {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 1;
 		}
 	</style>
 </head>
